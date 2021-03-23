@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: dubbo-consumer
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+
+server:
+  port: 9292
+
+dubbo:
+  application:
+    name: consumer
+  registry:
+    address: nacos://127.0.0.1:8848
+

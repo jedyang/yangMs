@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dubbo-provider
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+
+dubbo:
+  application:
+    name: provider
+  registry:
+    address: nacos://127.0.0.1:8848
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.yunsheng.ms.dubboprovider.service
