@@ -1,0 +1,19 @@
+# nacos根据application.name - profiles.active - .file-extension拼接成从配置中心拉取数据的id
+# 大小写敏感
+spring:
+  application:
+    name: config-nacos
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+
+# debug可以看到加载过程
+logging:
+  level:
+    root: debug
