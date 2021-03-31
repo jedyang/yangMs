@@ -5,7 +5,8 @@
 2，启动sentinel-dashboard  
 
 ```java -jar -Dserver.port=9100 sentinel-dashboard-1.8.1.jar```
-然后登录http://localhost:9100/#/login  
+然后登录http://localhost:9100/#/login
+默认端口是8181
 
 用户名密码：sentinel/sentinel
 
@@ -44,3 +45,7 @@ Sentinel 内置提供了7个处理节点。
 熔断降级的配置差不多。
 
 具体的高级选项配置，查阅官方文档。
+
+### 缺陷
+单独一个sentinel，是将规则数据保存在jvm中。重启就没了。
+所以必须联合nacos配置中心使用。

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: sentinel-nacos
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8181
+      eager: true
+      datasource:
+        flow: # 数据源名称，自定义即可
+          nacos: # 指明使用nacos作为数据源
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: ${spring.application.name}-flow-rules #定义流控规则data-id，完整名称就是sentinel-nacos-flow-rules，在nacos配置中心里设置时data-id必须对应。
+            groupId: SENTINEL_GROUP #gourpId对应配置文件分组，对应配置中心groups项
+            rule-type: flow #flow固定写死，说明这个配置是流控规则
+            username: nacos
+            password: nacos
+        degrade: # 配置熔断规则
+          nacos: # 指明使用nacos作为数据源
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: ${spring.application.name}-degrade-rules #完整名称就是sentinel-nacos-degrade-rules
+            groupId: SENTINEL_GROUP #gourpId对应配置文件分组，对应配置中心groups项
+            rule-type: degrade #熔断降级规则
+            username: nacos
+            password: nacos
+server:
+  port: 9191
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#开启 debug 是学习需要，生产改为 info 即可
+logging:
+  level:
+    root: debug
