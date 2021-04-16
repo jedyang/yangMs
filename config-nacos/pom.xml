@@ -46,6 +46,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+
+        <!-- 给nacos改密码使用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
